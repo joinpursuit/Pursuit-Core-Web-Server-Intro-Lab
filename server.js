@@ -7,8 +7,6 @@ const requestHandler = (request, response) => {
 
     response.statusCode = 200;
 
-    const name = request.url.slice(1);
-
     const user = {
         "results": [
           {
