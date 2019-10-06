@@ -1,5 +1,5 @@
-const femaleSrc = [];
-const maleSrc = [];
+const femaleSrc = [1, 2, 3, 4, 5];
+const maleSrc = [1, 2, 3, 4, 5];
 
 const fetchData = async () => {
     const url = 'http://localhost:3000';
@@ -16,15 +16,15 @@ const createCard = (obj) => {
     const h3 = createElement('h3');
     const p = createElement('p');
 
-    if (obj[0].gender === 'female') {
-        const photo = randomPhoto();
-        img.src = photo;
+    if (obj[3].gender === 'female') {
+        const num = randomPhoto('female');
+        img.src = `assets/female0${num}.png`;
     } else {
-        const photo = randomPhoto();
-        img.src = photo;
+        const num = randomPhoto('male');
+        img.src = `assets/male0${num}.png`;
     }
 
-    h3.innerText = `${obj[0].gender}, ${obj[0].nat}`;
+    h3.innerText = `${obj[3].gender}, ${obj[0].nat}`;
     p.innerText = `${obj[0].name.first} ${obj[0].name.last}`;
 
     div.append(img, h3, p);
