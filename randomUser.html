@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="./random.css" rel="stylesheet" />
+  <script>
+    document.addEventListener("DOMContentLoaded", displayCards)
+
+    function displayCards() {
+      fetch("http://localhost:3000")
+        .then(response => response.json())
+        .then(data => {
+          makeCards(data)
+        })
+        .catch(err => console.log(err))
+    }
+
+    function makeCards(user) {
+      console.log(user)
+      for (let i = 0; i < user.results.length; i++) {
+        let card = document.createElement("div")
+        let pic = document.createElement("img")
+        let label = document.createElement("p")
+        let nat = document.createElement("p")
+        label.innerText = user.results[i].name.title + " " + user.results[i].name.first + " " + user.results[i].name.last
+        nat.innerText = user.results[i].nat
+        if (user.results[i].gender === "female") {
+          pic.src = "https://cricclubs.com/documentsRep/profilePics/default-female-Image.jpg"
+        }
+        else if (user.results[i].gender === "male") {
+          pic.src = "http://www.nccacricket.org/documentsRep/profilePics/no_image.png"
+        }
+        document.body.appendChild(card)
+        card.append(pic, label, nat)
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
