@@ -15,11 +15,28 @@ async function loadDataFromServer() {
 function displayDataFromServer(data) {
     console.log(data)
 
-    let userHolder = document.querySelector('#container');
 
     for(let i = 0; i < data.results.length; i++) {
-        // console.log('Count it')
-    
+    let cardHolder = document.createElement('div');
+    cardHolder.id = 'card';
+
+    const newCard = document.createElement('img');
+
+    if(data.results[i].gender === 'male') {
+        newCard.src = "img_avatar.png"
+    } else {
+        newCard.src = "img_avatar2.png"
+    }
+
+    newCard.alt = "Avatar";
+    newCard.style = "width:100%";
+
+    cardHolder.appendChild(newCard);
+
+    let userHolder = document.createElement('div');
+    userHolder.id = 'container';
+    // let userHolder = document.querySelector('#container');
+
     const fullName = document.createElement('p');
     fullName.innerText = `${data.results[i].name.first.toUpperCase()} ${data.results[i].name.last.toUpperCase()}`
     fullName.style.fontWeight = 'bold';
@@ -29,6 +46,9 @@ function displayDataFromServer(data) {
 
     userHolder.appendChild(fullName)
     userHolder.appendChild(userTitle)
+    cardHolder.appendChild(userHolder);
+
+    document.body.appendChild(cardHolder);
 
     }
 }
