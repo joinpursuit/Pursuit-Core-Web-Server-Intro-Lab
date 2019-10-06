@@ -7,11 +7,17 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
     <!-- <link rel="stylesheet" href="index.css"> -->
-    <title>Hitting my First Server</title>
+    <title>Trivia Time</title>
 </head>
 <body>
     <h2>Trivia</h2>
 
+    <p id="currentQuestion"></p>
+    <select id="possAnswers"></select>
+    <form id="form">
+        <input type='text' style="width: 400px;" id="user-response" placeholder="Enter Answer">
+        <input type='submit' id="submit-answer" value="Final Answer">
+    </form>
     <button id="serverButton">Add Trivia</button>    
 </body>
 </html>

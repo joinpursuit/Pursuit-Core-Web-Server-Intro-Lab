@@ -1,24 +1,34 @@
 document.addEventListener('DOMContentLoaded', () =>{
-    getServerButton().addEventListener('click', loadDataFromServer)
+    fillSelectTag();
+    // loadDataFromServer();
+    // getServerButton().addEventListener('click', loadDataFromServer)
 })
 
-function getServerButton() {
-    return document.querySelector("#serverButton")
-}
-
-async function loadDataFromServer() {
+async function fillSelectTag () {
     const myURL = "http://localhost:3000/"
     const resp = await axios.get(myURL)    
     displayDataFromServer(resp.data)
 }
 
+function getServerButton() {
+    return document.querySelector("#serverButton")
+}
+
+// async function loadDataFromServer() {
+//     const myURL = "http://localhost:3000/"
+//     const resp = await axios.get(myURL)    
+//     displayDataFromServer(resp.data)
+// }
+
 function displayDataFromServer(data) {
-    console.log(data.results)
+    for(let i = 0; i < data.results.length; i++) {
+        console.log(data.results[i].question)
+    }
 
 
     // for(let i = 0; i < data.results.length; i++) {
-    // let cardHolder = document.createElement('div');
-    // cardHolder.id = 'card';
+    // let triviaHolder = document.createElement('div');
+    // triviaHolder.id = 'trivia';
 
     // const newCard = document.createElement('img');
 
@@ -33,9 +43,14 @@ function displayDataFromServer(data) {
 
     // cardHolder.appendChild(newCard);
 
-    // let userHolder = document.createElement('div');
-    // userHolder.id = 'container';
-    // // let userHolder = document.querySelector('#container');
+    // let currQuestion = document.createElement('p');
+    // let possAnswers = document.createElement('select');
+    // let userAnswer = document.createElement('button');
+
+    // currQuestion.id = 'question';
+    // possAnswers.id = 'answers';
+    
+
 
     // const fullName = document.createElement('p');
     // fullName.innerText = `${data.results[i].name.first.toUpperCase()} ${data.results[i].name.last.toUpperCase()}`
