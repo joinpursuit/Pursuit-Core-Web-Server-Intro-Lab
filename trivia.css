@@ -1,0 +1,36 @@
+body {
+	background-color: blue;
+}
+
+h1 {
+	text-align: center;
+	color: whitesmoke;
+}
+
+p{
+	color: whitesmoke;
+}
+
+.masterDiv{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 90vh;
+}
+
+.feedback{
+	text-align: center;
+	font-size: 25px;
+	color: whitesmoke;
+}
+
+.main-div{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-div{
+	text-align: center;
+}
