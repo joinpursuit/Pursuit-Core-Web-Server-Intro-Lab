@@ -23,6 +23,12 @@ function getServerButton() {
 function displayDataFromServer(data) {
     for(let i = 0; i < data.results.length; i++) {
         console.log(data.results[i].question)
+        let questionSelection = document.querySelector('#possAnswers');
+        let newQuestion = document.createElement("option");
+
+        newQuestion.innerText = data.results[i].incorrect_answers;
+
+        questionSelection.appendChild(newQuestion);
     }
 
 
