@@ -11,24 +11,28 @@ const fetchData = async () => {
 const createCard = (obj) => {
     const container = document.querySelector('#container');
 
-    const div = createElement('div');
-    const img = createElement('img');
-    const h3 = createElement('h3');
-    const p = createElement('p');
+    obj.forEach((ele, i) => {
+        const div = createElement('div');
+        div.setAttribute('class', 'card');
+        const img = createElement('img');
+        const h3 = createElement('h3');
+        const p = createElement('p');
 
-    if (obj[3].gender === 'female') {
-        const num = randomPhoto('female');
-        img.src = `assets/female0${num}.png`;
-    } else {
-        const num = randomPhoto('male');
-        img.src = `assets/male0${num}.png`;
-    }
+        if (obj[i].gender === 'female') {
+            const num = randomPhoto('female');
+            img.src = `assets/female0${num}.png`;
+        } else {
+            const num = randomPhoto('male');
+            img.src = `assets/male0${num}.png`;
+        }
 
-    h3.innerText = `${obj[3].gender}, ${obj[0].nat}`;
-    p.innerText = `${obj[0].name.first} ${obj[0].name.last}`;
+        // h3.innerText = `${obj[i].gender}, ${obj[i].nat}`;
+        h3.innerText = `${proper(obj[i].name.first)} ${proper(obj[i].name.last)}`;
+        // p.innerText = `${obj[i].name.first} ${obj[i].name.last}`;
 
-    div.append(img, h3, p);
-    container.appendChild(div);
+        div.append(img, h3, p);
+        container.appendChild(div);
+    })
 }
 
 const createElement = (tag) => document.createElement(tag);
@@ -45,4 +49,11 @@ const randomPhoto = (gender) => {
         const num = Math.floor(Math.random() * maleSrc.length);
         return maleSrc[num];
     }
+}
+
+const proper = (name) => {
+    let properName = '';
+    properName += name[0].toUpperCase();
+    properName += name.substring(1);
+    return properName;
 }
