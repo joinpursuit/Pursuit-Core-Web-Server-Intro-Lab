@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let button = document.querySelector("button")
+      button.addEventListener("click", showResult)
+      displayTrivia()
+    })
+
+    function displayTrivia() {
+      fetch("http://localhost:3000")
+        .then(response => response.json())
+        .then(data => {
+          trivia(data)
+        })
+        .catch(err => console.log(err))
+    }
+
+    let quesNum = 0;
+    let correct = null;
+
+    function trivia(data) {
+      console.log(data)
+      let question = document.querySelector("#question")
+      let select = document.querySelector("select")
+      correct = data.results[quesNum].correct_answer
+      while (select.firstChild) {
+        select.removeChild(select.firstChild)
+      }
+      question.innerText = data.results[quesNum].question
+      let answers = []
+      answers.push(correct)
+      for (let i = 0; i < data.results[quesNum].incorrect_answers.length; i++) {
+        answers.push(data.results[quesNum].incorrect_answers[i])
+      }
+
+      let shuffledAnswers = shuffle(answers)
+
+      for (let ans of shuffledAnswers) {
+        let option = document.createElement("option")
+        option.value = ans;
+        option.innerText = ans;
+        select.appendChild(option)
+      }
+
+      if (quesNum === data.results.length - 1) {
+        quesNum = 0;
+      }
+      else {
+        quesNum++
+      }
+
+    }
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * arr.length)
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+      return arr
+    }
+
+
+    function showResult() {
+      console.log(correct)
+      let select = document.querySelector("select")
+      let result = document.querySelector("#result")
+      if (select.value === correct) {
+        result.innerText = "Correct!!!"
+      }
+      else {
+        result.innerText = "Wrong!!! The answer was " + correct
+      }
+      displayTrivia()
+    }
+  </script>
+</head>
+
+<body>
+  <p id="question"></p>
+  <select></select>
+  <button>Submit</button>
+  <p id="result"></p>
+</body>
+
+</html>
