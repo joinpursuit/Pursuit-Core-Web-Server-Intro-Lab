@@ -11,7 +11,7 @@ const requestHandle = (request, response) => {
         response.setHeader("Content-Type", "application/json")
         response.setHeader("Access-COntrol-Allow-Origin", "*")
 
-        response.ed(jsonData)
+        response.end(jsonData)
     })
 }
 
