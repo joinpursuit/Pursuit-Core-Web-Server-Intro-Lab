@@ -1,7 +1,7 @@
 const http = require('http');
 
 //Declaring a port
-const port = 3001;
+const port = 3000;
 
 
 const requestHandler = (request, response) =>{
