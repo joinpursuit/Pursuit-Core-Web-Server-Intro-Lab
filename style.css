@@ -1,0 +1,25 @@
+.card {
+    width: 200px;
+    height: 325px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card > img {
+    height: 200px;
+}
+
+.card > h3 {
+    text-align: center;
+}
+
+#conatiner {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
