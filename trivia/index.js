@@ -39,15 +39,35 @@ function displayDataFromServer(data) {
             let guessAnswer3 = document.createElement("option");
             let guessAnswer4 = document.createElement("option");
     
-            guessAnswer1.innerText = data.results[i].correct_answer;
-            guessAnswer2.innerText = data.results[i].incorrect_answers[0];
-            guessAnswer3.innerText = data.results[i].incorrect_answers[1];
-            guessAnswer4.innerText = data.results[i].incorrect_answers[2];
+            guessAnswer1.innerText = data.results[i].incorrect_answers[0];
+            guessAnswer2.innerText = data.results[i].incorrect_answers[1];
+            guessAnswer3.innerText = data.results[i].incorrect_answers[2];
+            guessAnswer4.innerText = data.results[i].correct_answer;
 
-            questionSelection.appendChild(guessAnswer1);
-            questionSelection.appendChild(guessAnswer2);
-            questionSelection.appendChild(guessAnswer3);
-            questionSelection.appendChild(guessAnswer4);
+            let randomArrange = Math.floor(Math.random() * 4);
+
+            if(randomArrange === 0) {
+                questionSelection.appendChild(guessAnswer1);
+                questionSelection.appendChild(guessAnswer4);
+                questionSelection.appendChild(guessAnswer2);
+                questionSelection.appendChild(guessAnswer3);
+            } else if(randomArrange === 1){
+                questionSelection.appendChild(guessAnswer3);
+                questionSelection.appendChild(guessAnswer4);
+                questionSelection.appendChild(guessAnswer2);
+                questionSelection.appendChild(guessAnswer1);
+            } else if(randomArrange === 2){
+                questionSelection.appendChild(guessAnswer2);
+                questionSelection.appendChild(guessAnswer4);
+                questionSelection.appendChild(guessAnswer3);
+                questionSelection.appendChild(guessAnswer1);
+            } else if(randomArrange === 3){
+                questionSelection.appendChild(guessAnswer4);
+                questionSelection.appendChild(guessAnswer3);
+                questionSelection.appendChild(guessAnswer1);
+                questionSelection.appendChild(guessAnswer2);
+            }
+
 
         }
 
