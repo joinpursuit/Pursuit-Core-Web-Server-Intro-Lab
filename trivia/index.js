@@ -22,7 +22,17 @@ function getServerButton() {
 }
 
 function checkAnswer () {
-        console.log('Getting There')
+let userAnswer = document.querySelector("#correctAnswer").value
+        if (document.querySelector('#possAnswers').value === userAnswer){
+            console.log('Got it');
+            let rightResponse = document.createElement("p");
+            document.body.appendChild(rightResponse);
+        } else {
+            console.log('Wrong Answer')
+            let wrongResponse = document.createElement("p");
+            document.body.appendChild(wrongResponse);
+
+        }
 }
 // async function loadDataFromServer() {
 //     const myURL = "http://localhost:3000/"
@@ -48,6 +58,8 @@ function displayDataFromServer(data) {
             let guessAnswer2 = document.createElement("option");
             let guessAnswer3 = document.createElement("option");
             let guessAnswer4 = document.createElement("option");
+
+            guessAnswer4.id = 'correctAnswer';
     
             guessAnswer1.innerText = data.results[i].incorrect_answers[0];
             guessAnswer2.innerText = data.results[i].incorrect_answers[1];
