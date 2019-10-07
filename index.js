@@ -26,5 +26,3 @@ function displayResponseFromServer(data) {
     paragraph.innerText = data.nat
     document.body.append(emptyDiv, profilePic, innerContainer, firstHeader, paragraph)
 }
-
-

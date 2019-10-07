@@ -117,8 +117,9 @@ const requestHandler =(request, response)=>{
 }
 
 const server = http.createServer(requestHandler);
+
 server.listen(port,()=>{
-    
+
     console.log(`server running at http://localhost:${port}`)
 })
 //https://randomuser.me/api/?inc=gender,name,nat&&results=10
