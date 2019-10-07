@@ -3,7 +3,7 @@ body{
   align-self: auto;
   background-color:goldenrod;
 }
-button{
+#serverbutton{
   position: absolute;
   margin-left:100px;
   margin-top:100px;
