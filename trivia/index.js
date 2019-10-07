@@ -21,14 +21,36 @@ function getServerButton() {
 // }
 
 function displayDataFromServer(data) {
+    let randomNum = Math.floor(Math.random() * data.results.length);
+    console.log(data.results[randomNum].question)
+
+    
+    let currQuestion = document.querySelector('#currentQuestion');
+
+    currQuestion.innerText = data.results[randomNum].question
+
+
     for(let i = 0; i < data.results.length; i++) {
-        console.log(data.results[i].question)
-        let questionSelection = document.querySelector('#possAnswers');
-        let newQuestion = document.createElement("option");
+        // console.log(data.results[i].question)
+        if(data.results[randomNum].question === data.results[i].question) {
+            let questionSelection = document.querySelector('#possAnswers');
+            let guessAnswer1 = document.createElement("option");
+            let guessAnswer2 = document.createElement("option");
+            let guessAnswer3 = document.createElement("option");
+            let guessAnswer4 = document.createElement("option");
+    
+            guessAnswer1.innerText = data.results[i].correct_answer;
+            guessAnswer2.innerText = data.results[i].incorrect_answers[0];
+            guessAnswer3.innerText = data.results[i].incorrect_answers[1];
+            guessAnswer4.innerText = data.results[i].incorrect_answers[2];
 
-        newQuestion.innerText = data.results[i].incorrect_answers;
+            questionSelection.appendChild(guessAnswer1);
+            questionSelection.appendChild(guessAnswer2);
+            questionSelection.appendChild(guessAnswer3);
+            questionSelection.appendChild(guessAnswer4);
 
-        questionSelection.appendChild(newQuestion);
+        }
+
     }
 
 
