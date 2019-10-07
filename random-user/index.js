@@ -13,7 +13,6 @@ async function loadDataFromServer() {
 }
 
 const displayDataFromServer = (data) => {
-    console.log(data)
     let users = data.results
     let userId = 1
     for(user of users) {
