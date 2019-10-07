@@ -96,7 +96,6 @@ async function loadDataFromServer() {
 let triviaQuestions
 
 const displayDataFromServer = (data) => {
-    console.log(data)
 
     triviaQuestions = data.results
     let randomIndex = Math.floor(Math.random() * 9)
@@ -140,9 +139,6 @@ const displayDataFromServer = (data) => {
         }
         answerIndex += 1
     }
-
-    console.log(randomIndex)
-    console.log(randomQuestion)
 
 }
 
