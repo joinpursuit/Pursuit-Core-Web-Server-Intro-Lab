@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+  border: 2px solid black;
+  width: 40%;
+  transition: 0.3s;
+    
+}
+img:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+p{
+  color: white;
+  background-color: rgba(128, 0, 0, 0.5);
+  width: 41%;
+  /* bottom: 5px; */
+
+}
