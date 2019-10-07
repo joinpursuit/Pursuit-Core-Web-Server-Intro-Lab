@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="api_server.js"></script>
-    <title>random user API</title>
+    <title>random user API cards</title>
 </head>
 <body>
-    <h1>random user API</h1>
-    <button id="serverButton">Hit the server</button>
+    <h1>random user API cards</h1>
+    <div class="main-div"> 
+        <img id="random-pic" src="http://www.collegepossible.org/wp-content/uploads/2018/10/bio-placeholder.jpg"
+            alt="picture" width="250px">
+        <div class="header">
+            <h2 id="title-and-name"></h2>
+          
+        </div>
+        <div class="gender-div">
+            <p id="gender"></p>
+        </div>
+        <div class="nationality-div">
+            <p id="nationality"></p>
+        </div>
+        <button id="getUser">Get User</button>
+    </div>
 </body>
 
 </html>
