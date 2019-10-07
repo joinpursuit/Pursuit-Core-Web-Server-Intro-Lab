@@ -41,7 +41,7 @@
         "category": "Science: Computers",
         "type": "multiple",
         "difficulty": "medium",
-        "question": "What does &quot;LCD&quot; stand for?",
+        "question": "What does LCD stand for?",
         "correct_answer": "Liquid Crystal Display",
         "incorrect_answers": [
           "Language Control Design",
