@@ -1,9 +1,6 @@
 const randomUsersFile = require('./RandomUsersJSON');
 const myHttp = require('http');
 
-const data = randomUsersFile.response;
-
-
 const port = 2702;
 
 const requestHandler = (request, response) => {
@@ -11,7 +8,9 @@ const requestHandler = (request, response) => {
     response.setHeader('content-type', 'application/json');
     response.setHeader('Access-Control-Allow-Origin', '*'); 
 
+    let data = randomUsersFile.getTenRandomElement();
     const respData = JSON.stringify(data);
+    
     response.end(respData);
 }
 
