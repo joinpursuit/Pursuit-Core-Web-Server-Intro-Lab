@@ -22,8 +22,6 @@ function displayDataFromServer(data) {
 function createCard(data) {
     let user = data
     let index = Math.floor(Math.random() *10) //generate a random number
-    console.log(index);
-    console.log(user.results[0].gender)
     let img = ""
     
     if (user.results[index].gender === "female")
