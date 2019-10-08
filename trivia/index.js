@@ -23,14 +23,18 @@ function getServerButton() {
 
 function checkAnswer () {
 let userAnswer = document.querySelector("#correctAnswer").value
+let historyBody = document.querySelector("#history")
         if (document.querySelector('#possAnswers').value === userAnswer){
             console.log('Got it');
             let rightResponse = document.createElement("p");
-            document.body.appendChild(rightResponse);
+            rightResponse.innerText = 'Right Answer';
+
+            historyBody.appendChild(rightResponse);
         } else {
             console.log('Wrong Answer')
             let wrongResponse = document.createElement("p");
-            document.body.appendChild(wrongResponse);
+            wrongResponse.innerText = 'Wrong Answer';
+            historyBody.appendChild(wrongResponse);
 
         }
 }
