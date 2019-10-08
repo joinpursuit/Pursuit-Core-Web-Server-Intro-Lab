@@ -1,9 +1,11 @@
+let questionNumber = 0;
+
 document.addEventListener("DOMContentLoaded", () => {
     let selectUsersBtn = document.querySelector("#users");
     let selectTriviaBtn = document.querySelector("#trivia");
 
+    let usersDiv = document.querySelector("#profilesContainer");
     selectUsersBtn.addEventListener("click", async() => {
-        let usersDiv = document.querySelector("#profilesContainer");
         if (usersDiv) {
             usersDiv.parentNode.removeChild(usersDiv);
         }
@@ -11,27 +13,66 @@ document.addEventListener("DOMContentLoaded", () => {
         displayUsers(resp.data.results);
     })
 
-    selectTriviaBtn.addEventListener("click", async() => {
-        let previousDiv = document.querySelector("#triviaContainer")
-        if (previousDiv) {
-            previousDiv.parentNode.removeChild(previousDiv);
-        }
-
-        let triviaDiv = document.createElement("div");
-        triviaDiv.id = "triviaContainer";
-        document.body.appendChild(triviaDiv);
+    let triviaDiv = document.querySelector("#triviaContainer")
+    let newP = document.createElement("p");
+    let selectMenu = document.createElement("select");
+    let submitAnswerBtn = document.createElement("button");
+    submitAnswerBtn.innerText = "Submit Answer";
+    let ul = document.createElement("ul");
+    let nextQuestionBtn = document.createElement("button");
+    nextQuestionBtn.innerText = "Next Question";
     
-        let newP = document.createElement("p");
-        let selectMenu = document.createElement("select");
-        let submitAnswerBtn = document.createElement("button");
-        submitAnswerBtn.innerText = "Submit Answer";
-        triviaDiv.append(newP, selectMenu, submitAnswerBtn);
+    let triviaQuestions;
 
-        let ul = document.createElement("ul");
-        triviaDiv.appendChild(ul);
+    selectTriviaBtn.addEventListener("click", async() => {
+        questionNumber = 0;
+        if (triviaDiv) {
+            triviaDiv.innerHTML = "";
+            console.log(triviaDiv) 
+        } else {
+            triviaDiv = document.createElement("div");
+            triviaDiv.id = "triviaContainer";
+            document.body.appendChild(triviaDiv);
+        }
+        newP.innerText = "";
+        selectMenu.innerHTML = "";
+        ul.innerHTML = "";
+        triviaDiv.append(newP, selectMenu, submitAnswerBtn, ul, nextQuestionBtn);
+
+        nextQuestionBtn.style.visibility = "hidden";
 
         let resp = await axios('http://localhost:3107').catch(err => console.log(err));
-        displayTrivia(resp.data.results, 0, triviaDiv, newP, selectMenu, submitAnswerBtn, ul);
+        triviaQuestions = resp.data.results;
+
+        displayTrivia(triviaQuestions, newP, selectMenu, submitAnswerBtn, ul, nextQuestionBtn);
+    })
+
+    submitAnswerBtn.addEventListener("click", () => {
+        let question = triviaQuestions[questionNumber].question;
+        let correctAnswer = triviaQuestions[questionNumber].correct_answer;
+        let userAnswer = selectMenu.value;
+
+        nextQuestionBtn.style.visibility = "visible";
+
+        let newLi = document.createElement("li")
+        newLi.innerText = question + " Right answer: " + correctAnswer;
+
+        if (userAnswer !== "---Select an answer---") {
+            if (userAnswer === correctAnswer) {
+                newLi.innerText += " Correct"
+            } else {
+                newLi.innerText += " Incorrect, you choose " + userAnswer;
+            }
+            ul.appendChild(newLi);
+        }
+    })
+
+    nextQuestionBtn.addEventListener("click", () => {
+        nextQuestionBtn.style.visibility = "hidden";
+        questionNumber += 1;
+        if (questionNumber < triviaQuestions.length) {
+            displayTrivia(triviaQuestions, newP, selectMenu, submitAnswerBtn, ul, nextQuestionBtn);
+        }
     })
 })
 
@@ -58,23 +99,23 @@ const displayUsers = (usersArray) => {
     });
 }
 
-const displayTrivia = (triviaArray, number, container, pTag, selectMenuTag, submitBtn, ulTag) => {
-    let question = triviaArray[number].question
+const displayTrivia = (triviaArray, pTag, selectMenuTag, submitBtn, ulTag, nextQBtn) => {
+    let question = triviaArray[questionNumber].question;
+    let usedIndexesTracker = [];
+    let correctAnswer = triviaArray[questionNumber].correct_answer;
+    let sortedAnswers = [correctAnswer].concat(triviaArray[questionNumber].incorrect_answers);
+    let unsortedAnswers = [];
+    
+    for (let i = 0; i < sortedAnswers.length; i++) {
+        unsortedAnswers.push(sortedAnswers[getRandomIndex(sortedAnswers.length, usedIndexesTracker)])
+    }
+
     pTag.innerText = question;
 
     selectMenuTag.innerHTML = "";
     let option = document.createElement("option");
     option.innerText = "---Select an answer---";
-    
     selectMenuTag.appendChild(option);
-    
-    let correctAnswer = triviaArray[number].correct_answer;
-    let sortedAnswers = [correctAnswer].concat(triviaArray[number].incorrect_answers)
-    let usedIndexesTracker = [];
-    let unsortedAnswers = [];
-    for (let i = 0; i < sortedAnswers.length; i++) {
-        unsortedAnswers.push(sortedAnswers[getRandomIndex(sortedAnswers.length, usedIndexesTracker)])
-    }
     
     unsortedAnswers.forEach(element => {
         let newOption = document.createElement("option");
@@ -83,34 +124,6 @@ const displayTrivia = (triviaArray, number, container, pTag, selectMenuTag, subm
         selectMenuTag.appendChild(newOption);
     });
     
-    submitBtn.addEventListener("click", () => {
-        let nextButton = document.querySelector("#nextBtn");
-        if (nextButton) {
-            nextButton.parentNode.removeChild(nextButton);
-        }
-
-        let newLi = document.createElement("li")
-        newLi.innerText = question + " Right answer: " + correctAnswer;
-
-        let userAnswer = selectMenuTag.value;
-        if (userAnswer === correctAnswer) {
-            newLi.innerText += " Correct"
-        } else {
-            newLi.innerText += " Incorrect, you choose " + userAnswer;
-        }
-        ulTag.appendChild(newLi);
-
-        let nextBtn = document.createElement("button");
-        nextBtn.id = "nextBtn";
-        nextBtn.innerText = "Next Question";
-        container.appendChild(nextBtn);
-
-        nextBtn.addEventListener("click", () => {
-            number += 1;
-            if (number < triviaArray.length)
-            displayTrivia(triviaArray, number, container, pTag, selectMenuTag, submitBtn, ulTag)
-        })
-    })
 }
 
 
