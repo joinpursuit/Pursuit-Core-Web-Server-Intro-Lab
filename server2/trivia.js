@@ -4,7 +4,7 @@ const port = 3000;
 
 const requestHandle = (request, response) => {
     axios
-    .get("https://opentdb.com/api.php?amount=1&category=18&type=multiple")
+    .get("https://opentdb.com/api.php?amount=1&type=multiple")
     .then(axiosResponse => {
         const jsonData = JSON.stringify(axiosResponse.data)
 

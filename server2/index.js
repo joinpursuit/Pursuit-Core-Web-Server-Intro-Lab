@@ -11,11 +11,12 @@ async function loadDataFromServer() {
     const resp = await axios.get(url)
 
     displayData(resp.data);
+    
 }
 
 function displayData(data){
     console.log(data)
-for(let i = 0; i <data.results.length; i++){
+for(let i = 0; i < data.results.length; i++){
         results = data.results[i]
 
         const category = document.querySelector('h2')
@@ -25,8 +26,28 @@ for(let i = 0; i <data.results.length; i++){
         difficulty.innerText = `Difficulty: ${results.difficulty}`
 
         const question = document.querySelector('#para')
-        question.innerText = `${results.question}`
-
-    }
+        question.innerText = `Question: ${results.question}`
 
 }
+selectButton(results)
+
+}
+
+ function selectButton (arr) {
+    console.log(arr.incorrect_answers)
+
+    for(let i = 0;  i <= arr.incorrect_answers.length; i++) { 
+        let select = document.querySelector("#answers")
+    
+        console.log(arr.incorrect_answers)
+
+        let newSelect = document.createElement("option");
+         newSelect.innerText = arr.incorrect_answers[i]
+        // console.log(newSelect);
+        // console.log(select);
+        
+        
+
+    select.appendChild(newSelect);
+    }
+ }
