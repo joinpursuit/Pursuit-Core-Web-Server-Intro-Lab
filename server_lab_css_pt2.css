@@ -1,0 +1,13 @@
+body {
+    background-color: indianred;
+    display: flex;
+    align-content: center
+}
+
+#content {
+ background-color: lightcoral;
+ width: 40%;
+ padding: 20%;
+ margin: 20%;
+ border-radius: 10px;
+}
