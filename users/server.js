@@ -1,5 +1,5 @@
 // Joseph P. Pasaoa
-// INTRO TO SERVERS LAB
+// INTRO TO SERVERS LAB: RANDOM USER GEN
 //
 
 /* MODULE INITS */

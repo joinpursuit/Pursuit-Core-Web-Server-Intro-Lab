@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+   <meta name="author" content="Joseph P. Pasaoa" />
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   <title>Random Trivia | Web Server Intro Lab | Joseph P. Pasaoa</title>
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <script src="./index.js" type="text/javascript"></script>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Orbitron:900&display=swap">
+   <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+   <div id="base-flex">
+
+      <h1>Quick Trivia</h1>
+
+      <p id="scoreboard"><em id="wordRight">Right: <span id="numRight">0</span></em> / <em id="wordWrong">Wrong: <span id="numWrong">0</span></em></p>
+      <p id="marquee"><strong>Welcome, Player.</strong> Let's play some trivia! Choose what you think is the correct answer then click <b>Submit</b>. Good luck!</p>
+
+      <hr>
+
+      <div id="stage"></div>
+
+      <button type="submit">Submit</button>
+
+   </div>
+
+</body>
+</html>

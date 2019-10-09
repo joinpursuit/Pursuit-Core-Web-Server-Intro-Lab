@@ -1,5 +1,5 @@
 /* Joseph P. Pasaoa
-Web Server Intro Lab
+Web Server Intro Lab: Random User Gen
 */
 
 /* CSS RESET -- begin
@@ -80,10 +80,15 @@ div#stage {
 
   border-top: solid 1px chocolate;
   border-bottom: solid 1px chocolate;
-  /* box-shadow: 0px - 10px #000; */
   background-color: #ddd;
 }
 
+.male {
+  background-image: url('./avatar_male.png');
+}
+.female {
+  background-image: url('./avatar_female.png');
+}
 div.usercard {
   margin: 34px 22px;
   border: solid 1px silver;
@@ -95,7 +100,6 @@ div.usercard {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 5fr 10fr;
 
-  background-image: url('./avatar_default.png');
   background-repeat: no-repeat;
   background-size: 60%;
   background-position: 75% 85%;
