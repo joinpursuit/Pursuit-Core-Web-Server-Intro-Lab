@@ -36,26 +36,34 @@ const displayQuestionInfo = (results) => {
 
 const populateSelectTag = (currentQuestion) => {
    select = document.querySelector('select')
-  let answersArr = []
 
+let incorrectAnswers = currentQuestion.incorrect_answers 
   correctAnswer = currentQuestion.correct_answer
-  answersArr.push(correctAnswer)
+  incorrectAnswers.push(correctAnswer)
+  console.log(incorrectAnswers)
 
-  let incorrectAnswers = currentQuestion.incorrect_answers 
 
-  for (let i = 0; i < incorrectAnswers.length; i++){
-      answersArr.push(incorrectAnswers[i])
-  }
-
+  let randomizedArr = randomizeSelect(incorrectAnswers)
+  console.log(randomizedArr)
    
-   for (let i = 0; i < answersArr.length; i++){
+   for (let i = 0; i < randomizedArr.length; i++){
        let newOption = document.createElement('option')
-       newOption.innerText = answersArr[i]
+       newOption.innerText = randomizedArr[i]
        select.append(newOption)
    }
   
    let button = document.querySelector("#submitBtn")
     button.addEventListener('click', submitUserAnswer)
+}
+
+const randomizeSelect = (arr) => {
+let answerArr = []
+   for (let i = 0; i < 4; i++){
+       let randomIndex = Math.floor(Math.random() * arr.length)
+       let answer = arr.splice(randomIndex, 1)
+      answerArr.push(answer[0])
+   }
+   return answerArr
 }
 
 
@@ -70,6 +78,3 @@ const submitUserAnswer = () => {
        setTimeout('location.reload(true)', 10)
    }
 }
-
-
-
