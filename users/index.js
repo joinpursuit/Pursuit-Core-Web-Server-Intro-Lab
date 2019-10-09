@@ -28,7 +28,7 @@ const createUserCard = (obj) => {
   let cardTable = document.querySelector('#stage');
 
     let makingCard = document.createElement('div');
-    makingCard.className = 'usercard';
+    makingCard.className = `usercard ${obj.gender}`;
       let makingTitle = document.createElement('h6');
       makingTitle.innerText = obj.name.title;
       let makingName = document.createElement('h3');
