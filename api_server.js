@@ -1,50 +1,121 @@
-document.addEventListener("DOMContentLoaded", () => { //loading the DOM and listening for the grabUserButton function to 
-    grabUserButton().addEventListener("click", loadData)
-})
+const http = require("http");
 
-const grabUserButton = () => {
-    return document.querySelector("#getUser") // getting the button by its id
-}
+const port = 3000;
 
-const loadData = async () => {
-    const url = "http://localhost:3000"
-    const response = await axios.get(url) // fetching the data with the list of users and the required info.
-    getRandom()
-    displayData(response.data.results)
-}
+const requestHandler = (request, response) => {
+    console.log(request.method, request.url)
 
-const getRandom = () => {
-    return Math.random() * (10 - 1) + 1;
-}
+    response.statusCode = 200;
 
-const displayData = (users) => { //displaying the data that we requested from the server. 
-    console.log("user", users)
-    const mainDiv = document.querySelector(".main-div")
-    
-    for (let i = 0; i < users.length; i++) {
-        console.log("loop running")
-        let user = users[i]
-         const userCard = document.createElement("div")
-
-        const userHeader = document.createElement("h2")
-        userHeader.innerText = `${user.name.title}
-        ${user.name.first} ${user.name.last}`
-            console.log(userHeader.innerText)
-        const userGender = document.createElement("p")
-        userGender.innerText = user.gender;
-
-        const userNationality = document.createElement("p")
-        userNationality.innerText = user.nat;
-
-        const image = document.createElement("img")
-        
-        if (user.gender === "female") {
-            image.src = "https://gatheronbroadway.com/wp-content/uploads/2018/04/person-placeholder-female-300x300.png";
-        } else {
-           image.src = "http://tridentenviro.com/wp-content/uploads/2018/04/Trident-Placeholder-1024x683.jpg"
+    const users = {
+        "results": [{
+                "gender": "female",
+                "name": {
+                    "title": "mademoiselle",
+                    "first": "ruth",
+                    "last": "nicolas"
+                },
+                "nat": "CH"
+            },
+            {
+                "gender": "female",
+                "name": {
+                    "title": "miss",
+                    "first": "رها",
+                    "last": "سلطانی نژاد"
+                },
+                "nat": "IR"
+            },
+            {
+                "gender": "female",
+                "name": {
+                    "title": "mrs",
+                    "first": "patricia",
+                    "last": "hale"
+                },
+                "nat": "GB"
+            },
+            {
+                "gender": "male",
+                "name": {
+                    "title": "mr",
+                    "first": "fernando",
+                    "last": "cooper"
+                },
+                "nat": "US"
+            },
+            {
+                "gender": "female",
+                "name": {
+                    "title": "mrs",
+                    "first": "یسنا",
+                    "last": "صدر"
+                },
+                "nat": "IR"
+            },
+            {
+                "gender": "male",
+                "name": {
+                    "title": "mr",
+                    "first": "eino",
+                    "last": "tuomala"
+                },
+                "nat": "FI"
+            },
+            {
+                "gender": "female",
+                "name": {
+                    "title": "ms",
+                    "first": "gonca",
+                    "last": "özkara"
+                },
+                "nat": "TR"
+            },
+            {
+                "gender": "male",
+                "name": {
+                    "title": "mr",
+                    "first": "kyle",
+                    "last": "castillo"
+                },
+                "nat": "US"
+            },
+            {
+                "gender": "female",
+                "name": {
+                    "title": "miss",
+                    "first": "olivia",
+                    "last": "kumar"
+                },
+                "nat": "NZ"
+            },
+            {
+                "gender": "male",
+                "name": {
+                    "title": "monsieur",
+                    "first": "raymond",
+                    "last": "durand"
+                },
+                "nat": "CH"
+            }
+        ],
+        "info": {
+            "seed": "2cb086ce097c87ee",
+            "results": 10,
+            "page": 1,
+            "version": "1.2"
         }
-        
-        userCard.append(userHeader, userGender, userNationality, image)
-        mainDiv.appendChild(userCard)
     }
+
+
+
+    const jsonData = JSON.stringify(users);
+    response.setHeader("content-Type", "application/json")
+    response.setHeader("Access-Control-Allow-Origin", "*")
+    response.end(jsonData)
 }
+const server = http.createServer(requestHandler)
+
+server.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`)
+})
