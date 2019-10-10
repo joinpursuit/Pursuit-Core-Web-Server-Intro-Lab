@@ -114,7 +114,7 @@ const requestHandler = (request, response) => {
     response.setHeader("Access-Control-Allow-Origin", "*")
     response.end(jsonData)
 }
-const server = http.createServer()
+const server = http.createServer(requestHandler)
 
 server.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`)
