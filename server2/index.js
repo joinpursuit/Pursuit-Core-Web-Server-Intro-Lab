@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     triviaButton().addEventListener('click', loadDataFromServer)
 })
 
- let arr = [];
+ let newArray = [];
 
 function triviaButton(){
     return document.querySelector("#triviaButton")
@@ -45,10 +45,17 @@ selectButton(results)
 }
 
  function selectButton (arr) {
+    
      let empArr = [...arr.incorrect_answers, arr.correct_answer];
-     console.log(empArr)
+     
+    console.log("showing array not randomized below: " )
+    console.log(empArr)
+    
     randomizeArr(empArr)
     
+    console.log("After invoke function show's nothing below : " )
+    console.log(empArr)
+
     // console.log(arr.incorrect_answers)
     let select = document.querySelector("#answers")
     select.innerText = ""
@@ -104,7 +111,7 @@ let option = document.querySelector("#answers")
  }
 
  function randomizeArr(empArr){
-     const newArray = []
+    //  const newArray = []
      let randomIndex;
 
     while(empArr.length > 0){
@@ -115,8 +122,10 @@ let option = document.querySelector("#answers")
         newArray.push(arrayItem)
 
         empArr.splice(randomIndex, 1)
-        console.log(randomIndex)
+    
     }
+    console.log("Showing randomized array below : " )
     console.log(newArray)
     return newArray;
  }
+

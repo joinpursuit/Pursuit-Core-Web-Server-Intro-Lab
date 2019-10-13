@@ -9,7 +9,7 @@ const requestHandle = (request, response) => {
         const jsonData = JSON.stringify(axiosResponse.data)
 
         response.setHeader("Content-Type", "application/json")
-        response.setHeader("Access-COntrol-Allow-Origin", "*")
+        response.setHeader("Access-Control-Allow-Origin", "*")
 
         response.end(jsonData)
     })
