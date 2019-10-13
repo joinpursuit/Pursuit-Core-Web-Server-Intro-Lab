@@ -36,8 +36,7 @@ for(let i = 0; i < data.results.length; i++){
     let wrongAnswerParagraph = document.querySelector("#wrongAnswerParagraph")
     if(resetParagraph || wrongAnswerParagraph){
         resetParagraph.innerText = ""
-        wrongAnswerParagraph.innerText = ""
-
+        // wrongAnswerParagraph.innerText = ""
     }
     
 arr = results;
@@ -47,7 +46,9 @@ selectButton(results)
 
  function selectButton (arr) {
      let empArr = [...arr.incorrect_answers, arr.correct_answer];
-    // randomizeArr(empArr)
+     console.log(empArr)
+    randomizeArr(empArr)
+    
     // console.log(arr.incorrect_answers)
     let select = document.querySelector("#answers")
     select.innerText = ""
@@ -69,7 +70,7 @@ selectButton(results)
     let correctAnswer = document.createElement("option")
     correctAnswer.innerText = arr.correct_answer
 
-    // select.appendChild(correctAnswer)
+    select.appendChild(correctAnswer)
     
  }
 
@@ -102,8 +103,20 @@ let option = document.querySelector("#answers")
     }
  }
 
-//  function randomizeArr(empArr){
-//     while(empArr.length){
-//         let randomNum = Math.random(empArr)
-//     }
-//  }
+ function randomizeArr(empArr){
+     const newArray = []
+     let randomIndex;
+
+    while(empArr.length > 0){
+        randomIndex = Math.floor(Math.random() * (empArr.length -1))
+        
+        const arrayItem = empArr[randomIndex];
+
+        newArray.push(arrayItem)
+
+        empArr.splice(randomIndex, 1)
+        console.log(randomIndex)
+    }
+    console.log(newArray)
+    return newArray;
+ }
