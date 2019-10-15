@@ -30,7 +30,7 @@ const requestHandler = (request, response) => {
             {
                 "gender": "female",
                 "name": {
-                    "title": "mrs",
+                    "title": "mrs.",
                     "first": "patricia",
                     "last": "hale"
                 },
@@ -39,7 +39,7 @@ const requestHandler = (request, response) => {
             {
                 "gender": "male",
                 "name": {
-                    "title": "mr",
+                    "title": "mr.",
                     "first": "fernando",
                     "last": "cooper"
                 },
@@ -48,7 +48,7 @@ const requestHandler = (request, response) => {
             {
                 "gender": "female",
                 "name": {
-                    "title": "mrs",
+                    "title": "mrs.",
                     "first": "یسنا",
                     "last": "صدر"
                 },
@@ -57,7 +57,7 @@ const requestHandler = (request, response) => {
             {
                 "gender": "male",
                 "name": {
-                    "title": "mr",
+                    "title": "mr.",
                     "first": "eino",
                     "last": "tuomala"
                 },
@@ -66,7 +66,7 @@ const requestHandler = (request, response) => {
             {
                 "gender": "female",
                 "name": {
-                    "title": "ms",
+                    "title": "ms.",
                     "first": "gonca",
                     "last": "özkara"
                 },
@@ -75,7 +75,7 @@ const requestHandler = (request, response) => {
             {
                 "gender": "male",
                 "name": {
-                    "title": "mr",
+                    "title": "mr.",
                     "first": "kyle",
                     "last": "castillo"
                 },
@@ -119,6 +119,7 @@ const requestHandler = (request, response) => {
 const server = http.createServer(requestHandler);
 
 server.listen(port, () => {
-
     console.log(`Server running at on http://localhost:${port}`)
+
 })
+
