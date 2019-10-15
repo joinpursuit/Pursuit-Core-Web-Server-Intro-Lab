@@ -1,0 +1,32 @@
+/* The goal is to design mobile first and use the media queries to target larger screens
+I hope to have an easier time doing it this way instead of the reverse */
+body{
+    display: inline-block;
+    align-items: center;
+}
+select, button{
+    border: 2px solid gray;
+}
+
+
+
+
+
+
+
+@media all and (min-width:420px) {
+    body{
+        display:inline-block;
+        margin: 0 auto;
+    }
+    #heading {
+        color: green;
+         font-size : 32px;
+         font-weight: bold;
+         margin: 0 auto;
+         }
+         select, button{
+            border: none;
+        }
+    
+  }
