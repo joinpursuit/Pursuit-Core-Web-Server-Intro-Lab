@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     triviaButton().addEventListener('click', loadDataFromServer)
+
 })
 
- let newArray = [];
+ let empArray = [];
 
 function triviaButton(){
     return document.querySelector("#triviaButton")
@@ -17,115 +18,131 @@ async function loadDataFromServer() {
 }
 
 function displayData(data){
-    console.log(data)
+    // console.log(data)
 for(let i = 0; i < data.results.length; i++){
+
         results = data.results[i]
 
-        const category = document.querySelector('h2')
+    const triviaHeading = document.querySelector("#mainContainer")
+        const category = document.createElement('h2')
         category.innerText = `Category: ${results.category}`
-
-        const difficulty = document.querySelector('h3')
+        
+        const difficulty = document.createElement('h3')
         difficulty.innerText = `Difficulty: ${results.difficulty}`
 
-        const question = document.querySelector('#para')
+        const question = document.createElement('para')
         question.innerText = `Question: ${results.question}`
+        
+    // const selectBox = document.querySelector("#selectButton")
 
+        const select = document.querySelector('select')
+            // select.id = "answers"
+            // select.innerText = " "
+
+        const selectAns = document.createElement('option')
+            selectAns.id = "optionItem"
+            // selectAns.innerText = "Select Answer"
+
+        triviaHeading.appendChild(category)
+        triviaHeading.appendChild(difficulty)
+        triviaHeading.appendChild(question)
+        triviaHeading.appendChild(select)
+        select.appendChild(selectAns)
+
+     let resetParagraph = document.querySelector("#answerParagraph")
+         let wrongAnswerParagraph = document.querySelector("#wrongAnswerParagraph")
+         if(resetParagraph || wrongAnswerParagraph){
+             resetParagraph.innerText = ""
+        //      wrongAnswerParagraph.innerText = ""
+         }
+        }    
+        // select.replaceChild(selectAns, select)
+        arr = results
+        // console.log(data)
+        selectButton(data)
 }
 
-    let resetParagraph = document.querySelector("#answerParagraph")
-    let wrongAnswerParagraph = document.querySelector("#wrongAnswerParagraph")
-    if(resetParagraph || wrongAnswerParagraph){
-        resetParagraph.innerText = ""
-        // wrongAnswerParagraph.innerText = ""
-    }
+
+  function selectButton (arr) {
+        
+          let orderedAnswerArray = [...results.incorrect_answers, results.correct_answer];
+         
+        console.log(orderedAnswerArray)
+        
+         let output = randomizeArr(orderedAnswerArray)
+        
+        console.log(output)
     
-arr = results;
-selectButton(results)
-
-}
-
- function selectButton (arr) {
+    //  console.log(results.incorrect_answers)
+         let select = document.querySelector("#answers")
+          select.innerText = " "
     
-     let empArr = [...arr.incorrect_answers, arr.correct_answer];
-     
-    console.log("showing array not randomized below: " )
-    console.log(empArr)
+
     
-    randomizeArr(empArr)
+         let selectAns = document.createElement("option")
+         selectAns.innerText = "Select Answer"
+         select.appendChild(selectAns)
+        
+         for(let i = 0;  i < output.length; i++) { 
+         const newSelect = document.createElement("option");
+         const answerChoice = output[i]
+             newSelect.innerText = answerChoice;
+    //             console.log(output[i])
+             newSelect.id = "optionItem" 
     
-    console.log("After invoke function show's nothing below : " )
-    console.log(empArr)
+             select.appendChild(newSelect)
 
-    // console.log(arr.incorrect_answers)
-    let select = document.querySelector("#answers")
-    select.innerText = ""
-
-    let selectAns = document.createElement("option")
-    selectAns.innerText = "Select Answer"
-    select.appendChild(selectAns)
+     }
+     
+      }
+     
     
-    for(let i = 0;  i < arr.incorrect_answers.length; i++) { 
-        // console.log(arr.incorrect_answers)
-        let newSelect = document.createElement("option");
-         newSelect.innerText = arr.incorrect_answers[i]
-        // console.log(newSelect);
-        // console.log(select);
-        
-    select.appendChild(newSelect);
-    }
-    // console.log(arr.correct_answer)
-    let correctAnswer = document.createElement("option")
-    correctAnswer.innerText = arr.correct_answer
-
-    select.appendChild(correctAnswer)
+     function checkAnswer() {
+    let option = document.querySelector("#answers")
+          console.log(option.value)
+         console.log(arr)
+         if(option.value === arr.correct_answer){
+             let para = document.createElement('p')
+             para.setAttribute("id", "answerParagraph")
+             para.innerText = "This is the correct answer"
     
- }
-
- function checkAnswer() {
-let option = document.querySelector("#answers")
-    // console.log(option.value)
-    // console.log(arr)
-    if(option.value === arr.correct_answer){
-        let para = document.createElement('p')
-        para.setAttribute("id", "answerParagraph")
-        para.innerText = "This is the correct answer"
-
-        document.body.appendChild(para)
-        loadDataFromServer()
-    }
-    else{
-        let checkWrongAnswer = document.querySelector("#wrongAnswerParagraph")
-        if(checkWrongAnswer){
-            checkWrongAnswer.innerText = "Try Again"
-        document.body.appendChild(checkWrongAnswer)
-
-        }else{
-            let para = document.createElement('p')
-            para.innerText = "Try Again"
-            para.setAttribute("id", "wrongAnswerParagraph")
-        document.body.appendChild(para)
-
-        }
-        document.body.appendChild(para)
-    }
- }
-
- function randomizeArr(empArr){
-    //  const newArray = []
-     let randomIndex;
-
-    while(empArr.length > 0){
-        randomIndex = Math.floor(Math.random() * (empArr.length -1))
-        
-        const arrayItem = empArr[randomIndex];
-
-        newArray.push(arrayItem)
-
-        empArr.splice(randomIndex, 1)
+             document.body.appendChild(para)
+          loadDataFromServer()
+         }
+         else{
+             let checkWrongAnswer = document.querySelector("#wrongAnswerParagraph")
+             if(checkWrongAnswer){
+                 checkWrongAnswer.innerText = "Try Again"
+             document.body.appendChild(checkWrongAnswer)
     
-    }
-    console.log("Showing randomized array below : " )
-    console.log(newArray)
-    return newArray;
- }
+             }else{
+                 let para = document.createElement('p')
+                 para.innerText = "Try Again"
+                 para.setAttribute("id", "wrongAnswerParagraph")
+             document.body.appendChild(para)
+    
+             }
+         }
+      }
+    
+      function randomizeArr(empArr){
+        const newArray = []
+          let randomIndex;
+    
+         while(empArr.length > 0){
+             randomIndex = Math.floor(Math.random() * (empArr.length -1))
+            
+             const arrayItem = empArr[randomIndex];
+    
+             newArray.push(arrayItem)
+    
+             empArr.splice(randomIndex, 1)
+        
+         }
+         console.log("Showing randomized array below : " )
+         console.log(newArray)
+        
+         return newArray;
+      }
 
+  
