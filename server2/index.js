@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
- let empArray = [];
+//  let empArray = [];
 
 function triviaButton(){
     return document.querySelector("#triviaButton")
@@ -23,7 +23,7 @@ for(let i = 0; i < data.results.length; i++){
 
         results = data.results[i]
 
-    const triviaHeading = document.querySelector("#mainContainer")
+        const triviaHeading = document.querySelector("#mainContainer")
         const category = document.createElement('h2')
         category.innerText = `Category: ${results.category}`
         
@@ -52,7 +52,7 @@ for(let i = 0; i < data.results.length; i++){
      let resetParagraph = document.querySelector("#answerParagraph")
          let wrongAnswerParagraph = document.querySelector("#wrongAnswerParagraph")
          if(resetParagraph || wrongAnswerParagraph){
-             resetParagraph.innerText = ""
+             resetParagraph.innerText = " "
         //      wrongAnswerParagraph.innerText = ""
          }
         }    
@@ -70,37 +70,33 @@ for(let i = 0; i < data.results.length; i++){
         console.log(orderedAnswerArray)
         
          let output = randomizeArr(orderedAnswerArray)
+    //     console.log("first console", output)
         
-        console.log(output)
     
     //  console.log(results.incorrect_answers)
          let select = document.querySelector("#answers")
           select.innerText = " "
     
-
-    
          let selectAns = document.createElement("option")
          selectAns.innerText = "Select Answer"
          select.appendChild(selectAns)
-        
+    //     console.log(output)
          for(let i = 0;  i < output.length; i++) { 
          const newSelect = document.createElement("option");
          const answerChoice = output[i]
              newSelect.innerText = answerChoice;
-    //             console.log(output[i])
+    //             console.log(output[i])   
              newSelect.id = "optionItem" 
     
              select.appendChild(newSelect)
-
-     }
-     
+}
       }
      
     
      function checkAnswer() {
     let option = document.querySelector("#answers")
-          console.log(option.value)
-         console.log(arr)
+    //       console.log(option.value)
+    //      console.log(arr)
          if(option.value === arr.correct_answer){
              let para = document.createElement('p')
              para.setAttribute("id", "answerParagraph")
@@ -130,17 +126,19 @@ for(let i = 0; i < data.results.length; i++){
           let randomIndex;
     
          while(empArr.length > 0){
-             randomIndex = Math.floor(Math.random() * (empArr.length -1))
+             randomIndex = Math.floor(Math.random() * (empArr.length ))
             
              const arrayItem = empArr[randomIndex];
+    console.log(empArr.length)
     
              newArray.push(arrayItem)
     
              empArr.splice(randomIndex, 1)
         
          }
-         console.log("Showing randomized array below : " )
-         console.log(newArray)
+
+    //      console.log("Showing randomized array below : " )
+    //      console.log(newArray)
         
          return newArray;
       }
