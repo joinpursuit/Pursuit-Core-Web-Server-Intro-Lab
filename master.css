@@ -1,0 +1,13 @@
+
+
+.card{
+    margin:auto;
+height: 100px;
+width: 68px;
+display: flex;
+flex-wrap: wrap;
+
+
+text-align: center;
+
+}
