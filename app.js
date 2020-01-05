@@ -103,8 +103,14 @@ const server = http.createServer((req, res) => {
         "page": 1,
         "version": "1.2"
       }
-      console.log(req.url);
-    //   debugger
+      
+      if(req.url === "/results"){
+        res.end(JSON.stringify(results))
+
+      } else {
+       res.end("hello")
+      }
+  
       
 })
 
