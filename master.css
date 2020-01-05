@@ -1,6 +1,6 @@
 body {
     display: flex;
-    flex: wrap;
+    flex-direction: row;
 }
 
 img {
@@ -9,4 +9,5 @@ img {
 }
 
 .card {
+    /* flex: wrap; */
 }
