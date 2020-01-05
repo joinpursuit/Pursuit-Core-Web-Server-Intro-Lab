@@ -2,9 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
     axios.get("http://localhost:3000/").then(res => {
     res.data.forEach(person => {
         let container = document.querySelector('#container')
-        let peopleDiv = document.createElement('div')
+        let personDiv = document.createElement('div')
          let personName = person.name.first + " " + person.name.last + " " + person.gender
+        let h3 = document.createElement("h3")
+         let li = document.createElement("li")
         
+        h3.innerText = personName
+        debugger
+        document.body.appendChild(h3)
         
         
     })   
