@@ -1,9 +1,11 @@
+let ul = document.querySelector("ul")
+
 document.addEventListener("DOMContentLoaded", ()=>{
     axios.get("http://localhost:3000/people").then(res =>{
-        let ul = document.querySelector('ul')
+        debugger
     res.data.forEach(person =>{
             let li = document.createElement("li")
-            li.innerTex t= person.name.title;
+            li.innerText = person.name.title;
             ul.apppendChild(li)
             
         })
