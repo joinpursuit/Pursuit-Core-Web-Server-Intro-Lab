@@ -1,6 +1,6 @@
 
 const http = require("http");
-const port = 3000;
+const port = 8000;
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
@@ -96,28 +96,18 @@ const server = http.createServer((req, res) => {
           },
           "nat": "CH"
         }
-      ]
-res.end(JSON.stringify(results))
+      ];
+      if(req.url){
+        res.end(JSON.stringify(results))
+      }else{
+        res.end("Hello World")
+      }
 
 });
 server.listen(port, () =>{
     console.log("Server is running on port " + port);``
 });
 
-
-
-
-
-
-    // console.log(req.url)
-    // if(req.url === "/people"){
-    //     res.end(JSON.stringify(people));
-    // }else if(req.url === "/cats"){
-    //     res.end(JSON.stringify(cats))
-    // }
-    // else{
-    //     res.end("Hello World")
-    // }
 
 
 
