@@ -26,19 +26,19 @@ let obj = [
       "nat": "IR"
     },
     {
-    "gender": "female",
-    "name": {
-    "title": "mrs",
-    "first": "patricia",
-    "last": "hale"
+    gender: "female",
+    name: {
+    title: "mrs",
+    first: "patricia",
+    last: "hale"
       },
-      "nat": "GB"
+      nat: "GB"
     }
 ]
 
-if(req.url === "/obj"){
+
     res.end(JSON.stringify(obj))
-}
+
 })
 server.listen(port, () => { 
   console.log("server is running on port " + port);
