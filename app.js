@@ -39,5 +39,7 @@ let obj = [
 if(req.url === "/obj"){
     res.end(JSON.stringify(obj))
 }
-
+})
+server.listen(port, () => { 
+  console.log("server is running on port " + port);
 })
