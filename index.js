@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded",()=> {
                 let p2 = document.createElement("p")
                 img.src = "https://www.pinclipart.com/picdir/big/209-2098523_individuals-person-icon-circle-png-clipart.png"
                 img.alt = "Avatar"
-                img.style = "width:100%"
+                img.style = "width:100px"
     
                 div.className = "card"
                 document.body.appendChild(div)
