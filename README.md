@@ -1,7 +1,7 @@
 # Pursuit-Core-Web-Server-Intro-Lab
 
 ## Problem One - Random User Generator Server Clone
-
+–––
 ### Make the server
 
 Build a simple version of the [random user API](https://randomuser.me/api/?inc=gender,name,nat&&results=10)
@@ -13,6 +13,7 @@ When you hit the server, it should return the following JSON
 
 ```js
 {
+  
   "results": [
     {
       "gender": "female",
@@ -105,12 +106,14 @@ When you hit the server, it should return the following JSON
       "nat": "CH"
     }
   ],
+
   "info": {
     "seed": "2cb086ce097c87ee",
     "results": 10,
     "page": 1,
     "version": "1.2"
   }
+
 }
 ```
 
