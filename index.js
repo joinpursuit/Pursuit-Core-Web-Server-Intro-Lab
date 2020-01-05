@@ -20,6 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
             person.appendChild(nationality)
         }
         div.appendChild(person)
-        document.body.appendChild(div)
+        cards.appendChild(div)
     })
 })

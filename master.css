@@ -1,3 +1,12 @@
-body{
-    background: blue;
+body {
+    display: flex;
+    flex: wrap;
+}
+
+img {
+    height: 150px;
+    width: auto;
+}
+
+.card {
 }
