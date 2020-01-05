@@ -1,5 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     let container = document.querySelector("#container");
+
+    const answer = (correct) => {
+        let form = document.querySelector("form");
+        let select = document.querySelector("select");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if(select.value === correct) {
+                alert("CORRECT!");
+            } else {
+                alert("YOU SUCK!");
+            }
+        })
+    }
+
     axios.get("http://localhost:3000").then((res) => {
         res.data.forEach(async (question) => {
             container.innerHTML = "";
@@ -36,6 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
             form.appendChild(input);
 
             container.appendChild(form);
+
+            answer(question.correct_answer);
         })
     })
 })
