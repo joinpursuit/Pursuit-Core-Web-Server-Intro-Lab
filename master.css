@@ -1,6 +1,8 @@
 body {
-    display: flex;
-    flex-direction: row;
+    /* display: flex; */
+    /* flex-direction: column;  */
+    background-color: cadetblue;
+    
 }
 
 img {
@@ -9,5 +11,14 @@ img {
 }
 
 .card {
-    /* flex: wrap; */
+    display: flex;
+    align-content: center;
+}
+
+div {
+    padding: 10px;
+    background-color: cornsilk;
+    margin: 10px;
+    flex-direction: row;
+    justify-content: space-between;
 }
