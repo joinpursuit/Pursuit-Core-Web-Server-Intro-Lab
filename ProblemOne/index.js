@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded",()=>{
-    let main = document.querySelector("#main")
+    let main = document.querySelector(".main")
         axios.get("http://localhost:4000/people").then(response=>{
             let data = response.data.results 
             
@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded",()=>{
                 ul.appendChild(nationality)
                 div.appendChild(image)
                 div.appendChild(ul)
-                document.body.appendChild(div)
+                main.appendChild(div)
+                
             })
         })
 })
