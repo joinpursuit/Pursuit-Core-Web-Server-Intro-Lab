@@ -5,7 +5,8 @@ const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
     res.setHeader("Access-Control-Allow-Origin", "*");
-    const results = [
+    const data = {
+        "results": [
         {
           "gender": "female",
           "name": {
@@ -97,7 +98,16 @@ const server = http.createServer((req, res) => {
           "nat": "CH"
         }
       ]
-res.end(JSON.stringify(results))
+    }
+
+if(req.url==="/data"){
+    res.end(JSON.stringify(data))
+}else{
+    res.end("Hello World")
+}
+
+
+
 
 });
 server.listen(port, () =>{

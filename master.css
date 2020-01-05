@@ -1,8 +1,13 @@
-div {
-    width: 100px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 50px;
-    margin: 20px;
-    background-color:yellow;
-  }
+
+
+.card{
+    margin:auto;
+height: 100px;
+width: 68px;
+display: flex;
+flex-wrap: wrap;
+
+
+text-align: center;
+
+}
