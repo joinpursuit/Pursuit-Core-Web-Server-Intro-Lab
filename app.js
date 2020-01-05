@@ -4,6 +4,7 @@ const server = http.createServer((req, res)=>{
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
   res.setHeader("Access-Control-Allow-Origin", "*");
+
   const triviaDatabase = [
   {
     "response_code": 0,
@@ -132,6 +133,12 @@ const server = http.createServer((req, res)=>{
   }
   ]
   console.log(req.url)
+  
+  if(req.url){
+    res.end(JSON.stringify(triviaDatabase))
+  } else {
+    res.end("ERROR!")
+  }
 })
 server.listen(port, () => {
   console.log("server is running on port " + port)
