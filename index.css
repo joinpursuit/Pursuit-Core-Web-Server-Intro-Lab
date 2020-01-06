@@ -1,16 +1,20 @@
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px; /* 5px rounded corners */
+    transition: 0.2s;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto, 1fr);
   }
   
-  /* Add rounded corners to the top left and the top right corner of the image */
   img {
-    border-radius: 5px 5px 0 0;
+    padding: 30px;
     width: 300px;
     }
   
-img:hover{
+div:hover{
     box-shadow: 0 8px 16px 0 red;
+}
+
+img:hover{
+  box-shadow: 0 8px 16px yellow;
 }
 
