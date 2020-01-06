@@ -1,9 +1,14 @@
+body {
+    background-color: crimson;
+}
+
 container {
    display: grid;
    grid-template-columns: 1fr 1fr;
 }
 
 div {
+    background-color: ghostwhite;
     width: 280px;
     height: 350px;
     justify-content: space-evenly;
