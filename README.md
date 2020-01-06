@@ -17,9 +17,9 @@ When you hit the server, it should return the following JSON
     {
       "gender": "female",
       "name": {
-        "title": "mademoiselle",
-        "first": "ruth",
-        "last": "nicolas"
+        title: "mademoiselle",
+        first: "ruth",
+        last: "nicolas"
       },
       "nat": "CH"
     },

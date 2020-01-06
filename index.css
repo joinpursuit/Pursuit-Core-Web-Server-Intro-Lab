@@ -1,0 +1,20 @@
+.card {
+    transition: 0.2s;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto, 1fr);
+  }
+  
+  img {
+    padding: 30px;
+    width: 300px;
+    }
+  
+div:hover{
+    box-shadow: 0 8px 16px 0 red;
+}
+
+img:hover{
+  box-shadow: 0 8px 16px yellow;
+}
+
