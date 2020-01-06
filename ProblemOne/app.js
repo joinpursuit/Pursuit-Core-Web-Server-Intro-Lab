@@ -4,7 +4,7 @@ const server = http.createServer((request, response)=>{
     response.statusCode = 200
     response.setHeader("Content-Type", "Application/JSON")
     response.setHeader("Access-Control-Allow-Origin", "*")
-    const people = {
+    const people = { 
         "results": [
           {
             "gender": "female",
