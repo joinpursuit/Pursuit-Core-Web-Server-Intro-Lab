@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
         res.data.forEach(el => {
             let p = document.createElement("p");
             p.innerText = el.question;
-
+            let select = document.createElement("select");
             div.appendChild(p);
         })
     })
