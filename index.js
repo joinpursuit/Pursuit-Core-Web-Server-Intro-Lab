@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         let ul = document.querySelector('ul')
     res.data.forEach(person =>{
             let li = document.createElement("li")
-            li.innerTex t= person.name.title;
+            li.innerText= person.name.first;
             ul.apppendChild(li)
             
         })
