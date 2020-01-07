@@ -2,8 +2,8 @@ const http = require('http');
 const port = 3000;
 const server = http.createServer((req, res)=>{
   res.statusCode = 200;
-  res.setHeader("Const-Type", application/json);
-  res.setHeader("Access-ControL-Allow_Origin", "*");
+  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   const triviaDatabase = [
     {
       "response_code": 0,
@@ -132,9 +132,10 @@ const server = http.createServer((req, res)=>{
     }
 
   ]
+
   console.log(req.url);
   if(req.url){
-    res.end(JSON.stringify)
+    res.end(JSON.stringify(triviaDatabase))
   } else {
     res.end("Error")
   }
