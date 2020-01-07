@@ -3,7 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const checkAnswer = (data, i) => {
         let form = document.querySelector("form");
-
+        let select = document.querySelector("select");
+        form.addEventListener("submit", () => {
+            
+        })
     }
 
     const getAnswer = (data, i = 0) => {
@@ -34,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         form.appendChild(input);
 
         div.appendChild(form);
-        
+
     }
 
     axios.get("http://localhost:3000").then(res => {
