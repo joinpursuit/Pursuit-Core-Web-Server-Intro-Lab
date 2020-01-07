@@ -1,0 +1,26 @@
+body{
+    background-color: aquamarine;
+}
+div{
+    text-align: center;
+    background-color: hotpink;
+    margin: 20%;
+    margin-bottom: 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+p{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: xx-large;
+}
+ol{
+    text-align: center;
+    list-style-position: inside;
+    font-size: x-large;
+}
+h1{
+    text-align: center;
+    background-color: hotpink;
+    margin: 20%;
+    padding: 35px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
