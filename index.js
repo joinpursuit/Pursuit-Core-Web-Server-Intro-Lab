@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         h3.innerText = personName
         debugger
-        document.body.appendChild(h3)
+        female_card.appendChild(h3)
 
 
     })
