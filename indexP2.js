@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
         let sel =document.querySelector("select")
         if(sel.selectedOptions[0].value===displayquestion.correct_answer){
         if(!questionPool){
-            alert("you pass All Question")
+            alert("you pass All Question, press ok to restart")
+            location.reload();
         }
         alert("you are right"),
            getQuestion();
