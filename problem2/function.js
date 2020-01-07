@@ -34,26 +34,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
         select.addEventListener("change",(e)=>{
             ans = e.target.value    
-            debugger
+            // debugger
         })
 
         btn.addEventListener("click",() => {
             
-            
-            
-            if(ans === cAns[count]){
-                let ul = document.querySelector("ul")
+        if(count >= 5){
+            document.body.innerHTML = ""
+            let h1 = document.createElement("h1")
+            h1.innerText = "Game Over No more Trivia!!! "
+            document.body.appendChild(h1)
+        }else if(ans === cAns[count]){
+                let ol = document.querySelector("ol")
                 let li = document.createElement("li")
                 li.innerText = "Correct!!"
-                ul.appendChild(li)
+                ol.appendChild(li)
                 count++
                 display(count)
                 select.innerHTML = ""
-                debugger
+        } else {
+                    let ol = document.querySelector("ol")
+                    let li = document.createElement("li")
+                    li.innerText = "Incorrect!!"
+                    ol.appendChild(li)
+                    count++
+                display(count)
+                select.innerHTML = ""
                 } 
-                count++
-                display(count)
-                select.innerHTML = ""
         })
 
         display(0);
