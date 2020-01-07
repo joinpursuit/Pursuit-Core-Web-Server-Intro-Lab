@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     btn.addEventListener("click",event=>{
         let sel =document.querySelector("select")
         if(sel.selectedOptions[0].value===displayquestion.correct_answer){
+        if(!questionPool){
+            alert("you pass All Question")
+        }
         alert("you are right"),
            getQuestion();
            showonHTML()
