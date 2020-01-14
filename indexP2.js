@@ -1,7 +1,6 @@
 let questionPool = [];
 let displayquestion = [];
 let answer=[];
-let num=0;
 
 document.addEventListener("DOMContentLoaded", ()=>{
     axios.get("http://localhost:3000").then(res=>{
@@ -11,11 +10,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
         showonHTML()
     })
 
+
+
     let btn =document.querySelector("button")
+    
     btn.addEventListener("click",event=>{
         let sel =document.querySelector("select")
-        if(sel.selectedOptions[0].value===displayquestion.correct_answer){
-        if(!questionPool){
+        if(sel.selectedOptions[0].value ===displayquestion.correct_answer) {
+        if(!questionPool) {
             alert("you pass All Question, press ok to restart")
             location.reload();
         }

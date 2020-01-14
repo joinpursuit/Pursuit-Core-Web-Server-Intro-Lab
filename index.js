@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // let div = document.querySelector("div");
+    //       let div = document.querySelector("div");
     axios.get("http://localhost:3000/").then(res => {
         res.data.forEach((el) => {
             let div = document.createElement("div");
